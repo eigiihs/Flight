@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-height: 100vh;
+    overflow-y: hidden;
+    background-color: #151515;
+}
+
+.leftBanner {
+    width: 40%;
+}
+
+.leftBanner img {
+    max-width: 100%;
+}
+
+.rightBanner {
+    width: calc(100% - 40%);
+}
+
+.title,
+label {
+    color: #f2f2f2;
+}
+
+label {
+    font-weight: 700;
+}
+
+.title h1 {
+    font-size: 4vw;
+    font-weight: 900;
+}
+.title h2 {
+    font-size: 3vw;
+    font-weight: 800;
+}
+
+.forms {
+    max-width: 70%;
+}
+
+.forms input {
+    width: 100%;
+}
