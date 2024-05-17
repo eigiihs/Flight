@@ -80,14 +80,14 @@ hr {
 
 .card {
     width: 70%;
-    height: 30vh;
+    height: 60vh;
     margin-top: 10vh;
     border: 1px solid #F2F2F2;
     border-radius: 20px;
 }
 
 .cd-header {
-    height: 35%;
+    height: 25%;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #F2F2F2;
@@ -113,10 +113,17 @@ hr {
 }
 
 .cd-body {
+    height: 30vh;
     display: -webkit-box;
-    -webkit-line-clamp: 6;
+    -webkit-line-clamp: 8;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    border-bottom: 1px solid #F2F2F2;
+}
+
+.cd-body h4,
+.cd-body p{
+    padding: 1% 5%;
 }
 
 @media only screen and (min-width: 1400px) {

@@ -1,9 +1,19 @@
 <form action="/upload" method="POST" enctype="multipart/form-data">
 
     <label for="">Titulo</label>
-    <input type="text">
+    <input type="text" name="title" id="title" required>
 
-    <input type="file">
+    <label for="">Categoria</label>
+    <input type="text" name="category" id="category" list="cat-opt" required>
+    <datalist id="cat-opt">
+        <option value="arte">Arte</option>
+        <option value="politica">Política</option>
+    </datalist>
+
+    <label for="">Post:</label>
+    <input type="text" name="post" id="post">
+
+    <input type="file" name="image" id="image">
 
     <button type="submit">Enviar</button>
 </form>
