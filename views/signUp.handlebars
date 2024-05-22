@@ -3,27 +3,29 @@
         <div class="title">
             <h1>Hey! How's it going?</h1>
             <h2>Create your account.</h2>
+            <p>Already have an account? <a href="/login">Log In</a></p>
         </div>
-        <form action="">
+        <form action="/upSign" method="POST">
             <div class="form-controll">
                 <div class="oneput">
-                    <label for="">Name</label>
-                    <input type="text">
+                    <label for="">Username</label>
+                    <input type="text" name="username" id="username">
                 </div>
 
                 <div class="oneput">
-                    <label for="">Username</label>
-                    <input type="text">
+                    <label for="">Name</label>
+                    <input type="text" name="name" id="name">
                 </div>
             </div>
 
             <label for="">E-mail</label>
-            <input type="text">
+            <input type="text" name="email" id="email">
 
             <label for="">Password</label>
-            <input type="text">
+            <input type="password" name="password" id="password"> 
+
+            <button type="submit" class="btn">Sign Up</button>
         </form>
-        <button class="btn">Sign Up</button>
     </section>
     <section class="rightBanner">
         <img src="/imgs/sideBanner.svg" alt="">

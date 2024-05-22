@@ -1,131 +1,115 @@
-body {
-    background: #151515;
-    color: #F2F2F2;
-}
+    .correios {
+        display: flex;
+        width: calc(100% - 20%);
+        margin-left: 20%;
+        margin-top: 17.8vh;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 
-header {
-    width: 100%;
-    height: 17.8vh;
-    display: flex;
-    align-items: center;
-    position: fixed;
-    border-bottom: 1px solid #F2F2F2;
-    background: #151515;
-}
+    .correios h1{
+        font-size: 3.2vw;
+        font-weight: bold;
+    }
 
-header img{
-    width: 15%;
-    margin-left: 2.5em;
-}
+    .card {
+        width: 70%;
+        height: 45vh;
+        margin-top: 6v h 0 auto;
+        border: 1px solid #F2F2F2;
+        border-radius: 20px;
+    }
 
-main {
-    display: flex;
-}
+    .cd-header {
+        height: 25%;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #F2F2F2;
+        padding: 0 5%;
+    }
 
-.menu{
-    width: 20%;
-    height: 82vh;
-    border-right: 1px solid #F2F2F2;
-    position: fixed;
-    margin-top: 17.8vh;
-}
+    .profileInfo{
+        width: 30%;
+    }
 
-.option,
-.category{
-    display: flex;
-    align-items: center;
-    padding: .6em 0 .30em 0;
-}
+    .details{
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+    }
 
-.option{
-    margin-left: 1.4vw;
-}
+    .tagTheme {
+        display: flex;
+        background: #5CC667;
+        color: #12601A;
+        padding: 1.5vh 1vw;
+        border-radius: 5vw;
+        font-size: 1.3vw;
+        align-items: center;
+        margin-right: 2vw;
+    }
 
-.option h5{
-    font-size: 1.3vw;
-    margin-left: .7vw;
-}
+    .actions {
+        display: flex;
+        width: 10%;
+        justify-content: space-between;
+    }
 
-.option img{
-    width: 2vw;
-}
+    .cd-body {
+        height: 20vh;
+        overflow: auto;
+        margin: 2% 0;
+    }
 
-.category{
-    margin-left: 4vw;
-}
+    .cd-body::-webkit-scrollbar {
+        width: .7vw;
+    }
 
-.category h6{
-    font-size: 1.3vw;
-    margin-left: .7em;
-    font-weight: 500;
-}
+    .cd-body::-webkit-scrollbar-track {
+        background: #151515;
+    }
 
-.category img{
-    width: 1.8vw;
-}
+    .cd-body::-webkit-scrollbar-thumb {
+        background-color: #F2F2F2;
+        border-radius: 20px;
+        border: 1px solid #212121;
+    }
 
-hr {
-    margin-top: .3em !important;
-    width: 90%;
-    margin: 0 auto;
-}
+    .divText {
+        width: 100%;
+        margin-top: 2%;
+    }
 
-.correios {
-    width: calc(100% - 20%);
-    margin-left: 20%;
-    margin-top: 17.8vh;
-    display: flex;
-    justify-content: center;
-}
+    .cd-body h4,
+    .cd-body p {
+        padding: 1% 5%;
+    }
 
-.card {
-    width: 70%;
-    height: 60vh;
-    margin-top: 10vh;
-    border: 1px solid #F2F2F2;
-    border-radius: 20px;
-}
+    .cd-body h4{
+        font-size: 1.4vw;
+    }
 
-.cd-header {
-    height: 25%;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #F2F2F2;
-    padding: 0 5%;
-}
+    .cd-body p{
+        font-size: 1.2vw;
+    }
 
-.profileInfo{
-    margin-right: 50%;
-}
+    .interactions {
+        height: 10vh;
+        width: 11vw;
+        display: flex;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+    }
 
-.tagTheme{
-    background: #5CC667;
-    color: #12601A;
-    padding: .5vh 1vw;
-    border-radius: 90px;
-    margin-right: 15%;
-    font-size: 1.5vw;
-}
-.actions{
-    display: flex;
-    width: 10%;
-    justify-content: space-between;
-}
+    .interactions img{
+        width: 3vw;
+        padding: .5vw;
+    }
 
-.cd-body {
-    height: 30vh;
-    display: -webkit-box;
-    -webkit-line-clamp: 8;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    border-bottom: 1px solid #F2F2F2;
-}
-
-.cd-body h4,
-.cd-body p{
-    padding: 1% 5%;
-}
-
-@media only screen and (min-width: 1400px) {
-
-}
+    #save {
+        width: 2vw;
+    }

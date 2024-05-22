@@ -6,13 +6,20 @@
         <div class="title">
             <h1>Hey! What's Up?</h1>
             <h2>Good to see you again.</h2>
+            <p>Don't have an account? <a href="/signUp">Sign Up</a></p>
         </div>
-        <form action="">
+        <form action="/login" method="POST">
             <label for="">Username</label>
-            <input type="text">
+            <input type="text" name="username" id="username">
+
             <label for="">Password</label>
-            <input type="text">
+            <input type="password" name="password" id="password">
+
+            {{#if message}}
+            <p class="error-message">{{message}}</p>
+            {{/if}}
+
+            <button type="submit" class="btn">Log In</button>
         </form>
-        <button class="btn">Log In</button>
     </section>
 </div>

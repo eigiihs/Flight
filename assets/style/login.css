@@ -43,11 +43,17 @@ label {
 .title h2 {
     font-size: 3vw;
     font-weight: 800;
-    margin-bottom: 1.2em;
+    margin-bottom: .5em;
+}
+
+a {
+    color: #F2F2F2;
+    font-weight: bold;
 }
 
 form {
     max-width: 70%;
+    margin-top: 1.6em;
 }
 
 form input {
@@ -55,7 +61,7 @@ form input {
     background: none;
     border: none;
     border-bottom: 1px solid #f2f2f2;
-    margin: 1.3em 0;
+    margin: .8em 0 1em 0;
     color: #F2F2F2;
     font-size: 15px;
     outline: none;
