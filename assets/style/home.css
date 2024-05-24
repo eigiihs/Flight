@@ -1,22 +1,21 @@
     .correios {
-        display: flex;
-        width: calc(100% - 20%);
-        margin-left: 20%;
-        margin-top: 17.8vh;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+        width: 70%;
+        min-height: auto;
+        margin: 6vh 0 0 20%;
+        display: grid;
+        place-items: center;
+        gap: 5vh;
     }
 
-    .correios h1{
-        font-size: 3.2vw;
+    .correios h1 {
+        font-size: 2vw;
         font-weight: bold;
+        margin: 15vh 0 3vh 0;
     }
 
     .card {
         width: 70%;
-        height: 45vh;
-        margin-top: 6v h 0 auto;
+        min-height: auto;
         border: 1px solid #F2F2F2;
         border-radius: 20px;
     }
@@ -28,14 +27,14 @@
         align-items: center;
         justify-content: space-between;
         border-bottom: 1px solid #F2F2F2;
-        padding: 0 5%;
+        padding: 3% 5%;
     }
 
-    .profileInfo{
-        width: 30%;
+    .profileInfo {
+        width: 40%;
     }
 
-    .details{
+    .details {
         width: 50%;
         display: flex;
         justify-content: space-between;
@@ -58,10 +57,39 @@
         justify-content: space-between;
     }
 
+    .actions {
+        width: 2vw;
+        padding: 0 3vw;
+    }
+
     .cd-body {
-        height: 20vh;
+        min-height: 10vh;
         overflow: auto;
         margin: 2% 0;
+        padding: 1% 5%;
+    }
+
+    .divText {
+        width: 100%;
+        margin-top: 2%;
+    }
+
+    .cd-body h4,
+    .cd-body p {
+        padding: 1% 5%;
+    }
+
+    .cd-body h4 {
+        font-size: 1.4vw;
+        
+    }
+
+    .cd-body p {
+        font-size: 1.2vw;
+    }
+
+    .cd-body .images img {
+        height: 30vh;
     }
 
     .cd-body::-webkit-scrollbar {
@@ -78,38 +106,16 @@
         border: 1px solid #212121;
     }
 
-    .divText {
-        width: 100%;
-        margin-top: 2%;
-    }
-
-    .cd-body h4,
-    .cd-body p {
-        padding: 1% 5%;
-    }
-
-    .cd-body h4{
-        font-size: 1.4vw;
-    }
-
-    .cd-body p{
-        font-size: 1.2vw;
-    }
-
     .interactions {
-        height: 10vh;
         width: 11vw;
         display: flex;
         margin: 0 auto;
         align-items: center;
         justify-content: center;
+        padding: 1% 5%;
     }
 
-    .interactions img{
-        width: 3vw;
-        padding: .5vw;
-    }
-
-    #save {
+    .interactions img {
         width: 2vw;
+        padding: .5vw;
     }

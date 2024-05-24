@@ -64,10 +64,12 @@ main {
     margin-left: 4vw;
 }
 
-.category h6 {
+.category a {
     font-size: 1.3vw;
     margin-left: .7em;
     font-weight: 500;
+    text-decoration: none;
+    color: #F2F2F2;
 }
 
 .category img {

@@ -10,7 +10,7 @@
                 <a href="/home">Página Inicial</a>
             </div>
             <div class="option">
-                <img src="imgs/create-icon.svg" alt="">
+                <img src="/imgs/create-icon.svg" alt="">
                 <a href="/create">Criar um correio</a>
             </div>
         </div>
@@ -22,35 +22,35 @@
             </div>
             <div class="category">
                 <img src="/imgs/art-icon.svg" alt="">
-                <h6>Arte</h6>
+                <a href="/home/category/Arte">Arte</a>
             </div>
             <div class="category">
                 <img src="/imgs/cinema-icon.svg" alt="">
-                <h6>Cinema e TV</h6>
+                <a href="/home/category/Cinema e Tv">Cinema e TV</a>
             </div>
             <div class="category">
                 <img src="/imgs/science-icon.svg" alt="">
-                <h6>Ciências</h6>
+                <a href="/home/category/Ciências">Ciências</a>
             </div>
             <div class="category">
                 <img src="/imgs/pop-icon.svg" alt="">
-                <h6>Cultura pop</h6>
+                <a href="/home/category/Cultura POP">Cultura pop</a>
             </div>
             <div class="category">
                 <img src="/imgs/sport-icon.svg" alt="">
-                <h6>Esportes</h6>
+                <a href="/home/category/Esportes">Esportes</a>
             </div>
             <div class="category">
                 <img src="/imgs/humor-icon.svg" alt="">
-                <h6>Humor</h6>
+                <a href="/home/category/Humor">Humor</a>
             </div>
             <div class="category">
                 <img src="/imgs/politics-icon.svg" alt="">
-                <h6>Política</h6>
+                <a href="/home/category/Política">Política</a>
             </div>
             <div class="category">
                 <img src="/imgs/business-icon.svg" alt="">
-                <h6>Negócios</h6>
+                <a href="/home/category/Negócios">Negócios</a>
             </div>
         </div>
         <hr class="divMenu">
@@ -62,7 +62,11 @@
         </div>
     </section>
     <section class="correios">
+        {{#if category}}
+        <h1>{{category}}</h1>
+        {{else}}
         <h1>Welcome, {{user.username}}!</h1>
+        {{/if}}
 
         {{#each correios}}
         <div class="card">
@@ -87,7 +91,7 @@
                     {{post}}
                 </p>
                 <div class="images">
-                    <img src="/upload/imagens/{{imageName}}" alt="">
+                    <img src="/uploads/{{imageName}}" alt="">
                 </div>
             </div>
             <hr class="divText">
