@@ -61,49 +61,44 @@
             </div>
         </div>
     </section>
-    <section class="correios">
-        {{#if category}}
-        <h1>{{category}}</h1>
-        {{else}}
-        <h1>Welcome, {{user.username}}!</h1>
-        {{/if}}
+    
+    <section class="creating">
+        <form action="/correio/update" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="id" value={{dataCorreio.id}}>
+            <input type="hidden" name="imageName" value="{{dataCorreio.imageName}}">
 
-        {{#each correios}}
-        <div class="card">
-            <div class="cd-header">
-                <div class="profileInfo">
-                    <h5>{{name_}}</h5>
-                    <h6>@{{username}}</h6>
-                </div>
-                <div class="details">
-                    <div class="tagTheme">
-                        <h6>{{category}}</h6>
-                    </div>
-                    <div class="actions">
-                        <a href="/home/edit/{{id}}"><img src="/imgs/edit-icon.svg" alt=""></a>
-                        <a href="/home/remove/{{id}}"><img src="/imgs/delete-icon.svg" alt=""></a>
-                    </div>
-                </div>
+
+            <div class="entryarea">
+                <input type="text" name="title" id="title" value="{{dataCorreio.title}}" required>
+                <label for="">Título do correio</label>
             </div>
-            <a href="/home/post/{{id}}">
-            <div class="cd-body">
-                <h4>{{title}}</h4>
-                <p>
-                    {{post}}
-                </p>
-                <div class="images">
-                    <img src="/uploads/{{imageName}}" alt="">
-                </div>
+
+            <div class="entryarea">
+                <input type="text" name="category" id="category" value="{{dataCorreio.category}}" list="cat-opt"
+                    required>
+                <datalist id="cat-opt">
+                    <option value="Arte"></option>
+                    <option value="Cinema e TV"></option>
+                    <option value="Ciências"></option>
+                    <option value="Cultura POP"></option>
+                    <option value="Esportes"></option>
+                    <option value="Humor"></option>
+                    <option value="Política"></option>
+                    <option value="Negócios"></option>
+                </datalist>
+                <label for="">Categoria</label>
             </div>
-            </a>
-            <hr class="divText">
-            <div class="interactions">
-                <img src="/imgs/like-icon.svg" alt="">
-                <a href="/home/post/{{id}}"><img src="/imgs/comment-icon.svg" alt=""></a>
-                <img src="/imgs/save-icon.svg" alt="" id="save">
-                <img src="/imgs/share-icon.svg" alt="">
+
+            <div class="entryarea">
+                <input type="text" name="post" id="post" value="{{dataCorreio.post}}" required>
+                <label for="">Correio</label>
             </div>
-        </div>
-        {{/each}}
+
+            <div class="filearea">
+                <input type="file" name="image" id="image">
+            </div>
+
+            <button type="submit">Enviar</button>
+        </form>
     </section>
 </main>

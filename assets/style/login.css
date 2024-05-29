@@ -90,6 +90,7 @@ form input {
     transition: .25s ease-in-out;
     margin-top: 1em;
     cursor: pointer;
+    color: #151515;
 }
 
 .btn:hover{

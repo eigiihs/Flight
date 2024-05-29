@@ -1,7 +1,7 @@
     .correios {
         width: 70%;
         min-height: auto;
-        margin: 6vh 0 0 20%;
+        margin: 6vh 0 6vh 20%;
         display: grid;
         place-items: center;
         gap: 5vh;
@@ -34,6 +34,16 @@
         width: 40%;
     }
 
+    .profileInfo h5{
+        font-size: 1.2vw;
+    }
+
+    .profileInfo h6{
+        font-size: 1vw;
+        color: #b7b7b7;
+        font-weight: 500 !important;
+    }
+
     .details {
         width: 50%;
         display: flex;
@@ -42,13 +52,16 @@
 
     .tagTheme {
         display: flex;
-        background: #5CC667;
-        color: #12601A;
+        background: #F2F2F2;
         padding: 1.5vh 1vw;
         border-radius: 5vw;
         font-size: 1.3vw;
         align-items: center;
         margin-right: 2vw;
+    }
+
+    .tagTheme h6 {
+        color: #151515;
     }
 
     .actions {
@@ -57,9 +70,8 @@
         justify-content: space-between;
     }
 
-    .actions {
+    .actions img{
         width: 2vw;
-        padding: 0 3vw;
     }
 
     .cd-body {

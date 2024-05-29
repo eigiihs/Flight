@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     font-family: "Inter", sans-serif;
+    text-decoration: none;
+    color: #F2F2F2;
 }
 
 body {
@@ -49,7 +51,6 @@ main {
 
 .option h5,
 .option a {
-    color: #F2F2F2;
     text-decoration: none;
     font-size: 1.3vw;
     font-weight: 600;
@@ -69,7 +70,6 @@ main {
     margin-left: .7em;
     font-weight: 500;
     text-decoration: none;
-    color: #F2F2F2;
 }
 
 .category img {

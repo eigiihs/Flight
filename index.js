@@ -129,7 +129,7 @@ app.get('/home/category/:category', (req, res) => {
             return
         }
 
-        res.render('index', { css: '/style/home.css', title: '', user: req.session.user, correios: data, category});
+        res.render('index', { css: '/style/home.css', title: '', user: req.session.user, correios: data, category });
     })
 });
 
@@ -144,7 +144,7 @@ app.get('/create', (req, res) => {
     }
 
     checkAuth(req, res, () => {
-        res.render('newCorreio', { css: '/style/newCorreio.css', title: '' });
+        res.render('createCorreio', { css: '/style/newCorreio.css', title: '' });
     })
 });
 
@@ -180,6 +180,139 @@ app.post('/upload', upload.single('image'), async (req, res) => {
             }
 
             res.redirect('/home');
+        })
+
+    } catch (err) {
+        console.error('Erro:', err);
+        res.status(500).send('Erro ao adicionar dados!');
+    }
+});
+
+app.get('/home/post/:id', (req, res) => {
+    const postID = req.params.id;
+
+    const correioSql = `SELECT Correios.*, Users.username, Users.name_ 
+    FROM Correios JOIN Users ON Correios.user_id = Users.id 
+    WHERE Correios.id = ${postID}`;
+
+    const commentSql = `SELECT Comments.*, Users.username, Users.name_
+        FROM Comments JOIN Users ON Comments.user_id = Users.id
+        WHERE Comments.correio_id = ${postID} 
+        ORDER BY Comments.created_at DESC`;
+
+    conn.query(correioSql, function (err, postData) {
+        if (err) {
+            console.log('erro: ', err)
+            return res.status(500).send('Erro ao obter o Post!')
+        }
+
+        conn.query(commentSql, function (err, commentData) {
+            if (err) {
+                console.log('erro: ', err)
+                commentData = []
+            }
+
+            res.render('correio', { css: '/style/correio.css', title: '', user: req.session.user, correio: postData[0], comments: commentData, id: postID });
+        })
+    })
+});
+
+app.get('/home/edit/:id', (req, res) => {
+    const id = req.params.id;
+
+    const sql = `SELECT Correios.*, Users.username, Users.name_ 
+    FROM Correios JOIN Users ON Correios.user_id = Users.id 
+    WHERE Correios.id = ${id}`;
+
+    conn.query(sql, function (err, data) {
+        if (err) {
+            console.log('erro: ', err);
+            return;
+        }
+
+        const dataCorreio = data[0];
+
+        res.render('updateCorreio', { css: '/style/updateCorreio.css', title: '', dataCorreio })
+    })
+});
+
+app.post('/correio/update', upload.single('image'), async (req, res) => {
+    try {
+
+        function checkAuth(req, res, next) {
+            if (!req.session.user) {
+                req.session.message = 'Você precisa estar logado para adicionar um comentário!'
+                return res.redirect('/showMessage');
+            }
+            next();
+        }
+        
+        const id = req.body.id;
+        const title = req.body.title;
+        const category = req.body.category;
+        const post = req.body.post;
+
+        let imgName = req.body.imageName;
+
+        if (req.file) {
+            const imgData = req.file.buffer;
+            imgName = req.file.originalname;
+            await sharp(imgData).toFile(`uploads/${imgName}`);
+        }
+
+        const sql = `UPDATE Correios SET title = '${title}', category = '${category}', post = '${post}', imageName = '${imgName}' 
+        WHERE id = ${id}`;
+
+        conn.query(sql, function (err) {
+            if (err) {
+                console.log('erro: ', err);
+                return false;
+            }
+
+            res.redirect('/home');
+        })
+
+    } catch (err) {
+        console.error('Erro:', err);
+        res.status(500).send('Erro ao editar dados!');
+    }
+});
+
+app.get('/home/remove/:id', (req, res) => {
+    const id = req.params.id;
+
+    const sql = `DELETE FROM Correios WHERE id = ${id}`;
+
+    conn.query(sql, function (err, data) {
+        if (err) {
+            console.log('erro: ', err);
+            return;
+        }
+
+        res.redirect('/home')
+    })
+});
+
+app.post('/home/correio/:id/comment', (req, res) => {
+    try {
+        if (!req.session.user) {
+            return res.status(401).send('Você precisa estar logado para adicionar um comentário!')
+        }
+
+        const id = req.session.user.id;
+        const correioID = req.params.id;
+        const comment = req.body.comment;
+
+        const sql = `INSERT INTO Comments (comment_, user_id, correio_id)
+        VALUES ('${comment}', '${id}', '${correioID}')`;
+
+        conn.query(sql, function (err) {
+            if (err) {
+                console.log('erro: ', err);
+                return false;
+            }
+
+            res.redirect(`/home/post/${correioID}`);
         })
 
     } catch (err) {

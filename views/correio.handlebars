@@ -1,0 +1,60 @@
+<main>
+    <section class="correios">
+        <div class="card">
+            <a href="/home/post/{{correio.id}}"></a>
+            <div class="cd-header">
+                <div class="profileInfo">
+                    <h5>{{correio.name_}}</h5>
+                    <h6>@{{correio.username}}</h6>
+                </div>
+                <div class="details">
+                    <div class="tagTheme">
+                        <h6>{{correio.category}}</h6>
+                    </div>
+                    <div class="actions">
+                        <img src="/imgs/edit-icon.svg" alt="">
+                        <img src="/imgs/delete-icon.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="cd-body">
+                <h4>{{correio.title}}</h4>
+                <p>
+                    {{correio.post}}
+                </p>
+                <div class="images">
+                    <img src="/uploads/{{correio.imageName}}" alt="">
+                </div>
+            </div>
+            <hr class="divText">
+            <div class="interactions">
+                <img src="/imgs/like-icon.svg" alt="">
+                <img src="/imgs/comment-icon.svg" alt="">
+                <img src="/imgs/save-icon.svg" alt="" id="save">
+                <img src="/imgs/share-icon.svg" alt="">
+            </div>
+        </div>
+    </section>
+    <section>
+        <form action="/home/correio/{{id}}/comment" method="POST">
+            <input type="text" name="comment" id="comment">
+            <label for="">Comentar</label>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+    {{#if comments.length}}
+    <section class="comments">
+        <h3>Comentários</h3>
+        {{#each comments}}
+        <div class="comment">
+            <div class="commentHeader">
+                <h5>{{this.username}}</h5>
+                <span>{{this.created_at}}</span>
+            </div>
+            <p>{{this.comment_}}</p>
+        </div>
+        {{/each}}
+    </section>
+    {{/if}}
+</main>
