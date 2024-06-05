@@ -10,7 +10,12 @@
 }
 
 .creating h4{
-    font-size: 3vw;
+    font-size: 2.5vw;
+    margin-bottom: 3vh;
+}
+
+.container{
+    margin: 0 auto;
 }
 
 .entryarea{
@@ -31,13 +36,17 @@
 }
 
 .entryarea input{
+    padding: .2vh 1vw;
     height: 6vh;
     width: 40vw;
+}
+
+.entryarea input,
+.filearea input{
     font-size: 1.2vw;
     color: #F2F2F2;
-    padding: 0 1vw;
     background: transparent;
-    border: 0.1vw solid #F2F2F2;
+    border: 1.5px solid #F2F2F2;
     outline: none;
     border-radius: 0.5vw;
 }
@@ -45,12 +54,63 @@
 .entryarea input:focus~label,
 .entryarea input:valid~label{
     top: 0;
-    font-size: 0.8vw;
+    font-size: 0.9vw;
     background: #151515;
+    font-weight: bold;
 }
 
 .filearea{
     display: flex;
-    width: 70%;
     justify-content: center;
+}
+
+.filearea input{
+    height: 6.4vh;
+    width: 42vw;
+}
+
+.filearea input[type="file"]::file-selector-button {
+    height: 100%;
+    border: none;
+    margin-right: 1.5vw;
+    cursor: pointer;
+    border-right: #F2F2F2 1.5px solid;
+    transition: 0.2s ease-in-out;
+}
+
+.filearea input[type="file"]::file-selector-button:hover {
+    background: #151515;
+    color: #F2F2F2;
+    border-right: #F2F2F2 1.5px solid;
+}
+
+.submit{
+    display: flex;
+    margin: 2vh auto;
+    justify-content: center;
+}
+  
+.submit button{
+    padding: .4em 1em;
+    border: 1.5px solid #F2F2F2;
+    border-radius: 10px;
+    background: transparent;
+    font-size: 1.3vw;
+    font-weight: 900;
+    transition: .25s ease-in-out;
+    margin-top: 1em;
+    cursor: pointer;
+    color: #F2F2F2;
+    transition: 0.3s ease-in-out;
+}
+
+.submit button:hover{
+    background: #F2F2F2;
+    color: #151515;
+    box-shadow: 0px 15px 20px rgba(145, 145, 145, 0.4);
+    transform: translateY(-7px);
+}
+
+.submit button:active{
+    transform: translateY(-1px);
 }

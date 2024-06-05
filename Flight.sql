@@ -1,0 +1,43 @@
+CREATE DATABASE Flight;
+
+USE Flight;
+
+CREATE TABLE Users (
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    username VARCHAR(30) NOT NULL,
+    name_ VARCHAR (45) NOT NULL,
+    email VARCHAR(200) NOT NULL,
+    password_ VARCHAR(50) NOT NULL
+);
+
+SELECT * FROM Users;
+
+CREATE TABLE Correios (
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    title VARCHAR(140) NOT NULL,
+    category VARCHAR(20) NOT NULL,	
+    post VARCHAR(1000),
+    imageName VARCHAR(800),
+    user_id INT,	
+    FOREIGN KEY (user_id) REFERENCES Users(id)
+);
+
+SELECT * FROM Correios;
+
+CREATE TABLE Comments (
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    comment_ VARCHAR (350) NOT NULL,
+    user_id INT,
+    correio_id INT,
+    FOREIGN KEY (user_id) REFERENCES Users(id),
+    FOREIGN KEY (correio_id) REFERENCES Correios(id)
+);
+
+SELECT * FROM Comments;
+
+ALTER TABLE Correios ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE Comments ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+
+ALTER TABLE Comments DROP FOREIGN KEY comments_ibfk_1;
+ALTER TABLE Comments ADD CONSTRAINT comments_ibfk_1
+FOREIGN KEY (correio_id) REFERENCES Correios(id) ON DELETE CASCADE;

@@ -5,8 +5,9 @@ const multer = require('multer');
 const sharp = require('sharp');
 const cors = require('cors');
 const session = require('express-session');
-const fs = require("fs");
 const path = require('path');
+const moment = require('moment');
+
 
 const app = express();
 
@@ -30,8 +31,26 @@ app.use(session({
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-app.engine('handlebars', exphbs.engine());
+const hbs = exphbs.create({
+    defaultLayout: 'main',
+    helpers: {
+        formatDate: function (date) {
+            return moment(date).format('DD-MM-YYYY HH:mm:ss');
+        }
+    }
+});
+app.engine('handlebars', hbs.engine)
 app.set('view engine', 'handlebars');
+
+function checkAuth(message) {
+    return function (req, res, next) {
+        if (!req.session.user) {
+            req.session.message = message
+            return res.redirect('/showMessage');
+        }
+        next();
+    }
+};
 
 app.get('/', (req, res) => {
     res.render('login', { css: '/style/login.css', title: '| Login' })
@@ -81,17 +100,22 @@ app.post('/upSign', (req, res) => {
         }
 
         if (data.length > 0) {
-            return res.status(400).send('Username já existe! Faça login ou escolha outra.')
+            return res.status(400).send('Username já existe! Faça login ou escolha outro.')
         }
 
         const sql = `INSERT INTO Users (username, name_, email, password_) 
         VALUES ('${username}', '${name}', '${email}', '${password}')`;
 
-        conn.query(sql, function (err) {
+        conn.query(sql, function (err, data) {
             if (err) {
                 console.log('erro: ', err);
                 return false;
             }
+
+            const newUser = data.insertId;
+
+            req.session.user = {id: newUser, username: username};
+            console.log('User registrado e autenticado: ', req.session.user);
 
             res.redirect('/home');
         })
@@ -133,30 +157,18 @@ app.get('/home/category/:category', (req, res) => {
     })
 });
 
-app.get('/create', (req, res) => {
+app.get('/create', checkAuth('Você precisa estar logado para criar um post!'), (req, res) => {
 
-    function checkAuth(req, res, next) {
-        if (!req.session.user) {
-            req.session.message = 'Você precisa estar logado para criar um post!';
-            return res.redirect('/showMessage');
-        }
-        next();
-    }
+    res.render('createCorreio', { css: '/style/newCorreio.css', title: '' });
 
-    checkAuth(req, res, () => {
-        res.render('createCorreio', { css: '/style/newCorreio.css', title: '' });
-    })
 });
 
 app.get('/showMessage', (req, res) => {
-    res.render('showMessage', { message: req.session.message });
+    res.render('showMessage', { css: '/style/message.css', message: req.session.message });
 });
 
 app.post('/upload', upload.single('image'), async (req, res) => {
     try {
-        if (!req.session.user) {
-            return res.status(401).send('Você precisa estar logado para criar um post!')
-        }
 
         const id = req.session.user.id;
         const title = req.body.title;
@@ -217,7 +229,7 @@ app.get('/home/post/:id', (req, res) => {
     })
 });
 
-app.get('/home/edit/:id', (req, res) => {
+app.get('/home/edit/:id', checkAuth('Você precisa estar logado para editar um post!'), (req, res) => {
     const id = req.params.id;
 
     const sql = `SELECT Correios.*, Users.username, Users.name_ 
@@ -239,14 +251,6 @@ app.get('/home/edit/:id', (req, res) => {
 app.post('/correio/update', upload.single('image'), async (req, res) => {
     try {
 
-        function checkAuth(req, res, next) {
-            if (!req.session.user) {
-                req.session.message = 'Você precisa estar logado para adicionar um comentário!'
-                return res.redirect('/showMessage');
-            }
-            next();
-        }
-        
         const id = req.body.id;
         const title = req.body.title;
         const category = req.body.category;
@@ -293,11 +297,8 @@ app.get('/home/remove/:id', (req, res) => {
     })
 });
 
-app.post('/home/correio/:id/comment', (req, res) => {
+app.post('/home/correio/:id/comment', checkAuth('Você precisa estar logado para adicionar um comentário!'), (req, res) => {
     try {
-        if (!req.session.user) {
-            return res.status(401).send('Você precisa estar logado para adicionar um comentário!')
-        }
 
         const id = req.session.user.id;
         const correioID = req.params.id;

@@ -1,0 +1,91 @@
+.align {
+    display: flex;
+    justify-content: center;
+    margin: 18vh 0 3vh 12vh;
+    width: 80%;
+    min-height: auto;
+}
+
+.details {
+    width: 100%;
+}
+
+.back img {
+    width: 63%;
+}
+
+.cr-datas {
+    margin: 4vh 0 4vh 0;
+    display: grid;
+    gap: 2.3vh;
+}
+
+.cr-datas h4{
+    font-size: 1.8vw;
+}
+
+.cr-datas .images img {
+    max-height: 80vh;
+}
+
+.add-comment {
+    margin: 2em 0;
+}
+
+.add-comment h5 {
+    font-size: 1.9vw;
+}
+
+form {
+    max-width: 80%;
+    display: flex;
+    align-items: flex-end;
+}
+
+form input {
+    width: 60%;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #f2f2f2;
+    margin-top: .8em;
+    color: #F2F2F2;
+    font-size: 15px;
+    outline: none;
+    padding: 0.3vw;
+}
+
+.btn-comment {
+    color: #f2f2f2;
+    background: #151515;
+    border: 1.5px solid #f2f2f2;
+    border-radius: 5px;
+    padding: 0.7vw;
+    margin-left: 4%;
+}
+
+.comment {
+    margin: 2.3em 0;
+}
+
+.comment p {
+    margin: 0.5em 0 0 0;
+}
+
+.commentHeader {
+    display: flex;
+    align-items: center;
+}
+
+.commentHeader h5 {
+    font-size: 1em;
+}
+
+.commentHeader img {
+    width: 0.42em;
+    margin: 0 0.3em;
+}
+
+.commentHeader span {
+    font-size: 0.65em;
+    color: #b8b7b786;
+}

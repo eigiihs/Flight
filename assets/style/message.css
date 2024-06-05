@@ -1,0 +1,53 @@
+.message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4vh 3vw;
+    background: #F2F2F2;
+    color: #151515;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(255, 255, 255, 0.07) 0px 2px 4px, rgba(255, 255, 255, 0.07) 0px 4px 8px, rgba(255, 255, 255, 0.07) 0px 8px 16px, rgba(255, 255, 255, 0.07) 0px 16px 32px, rgba(255, 255, 255, 0.07) 0px 32px 64px;
+}
+
+.logo{
+    margin-bottom: 4vh;
+}
+
+.info p{
+    color: #151515;
+    font-weight: 600;
+    font-size: 1.5vw;
+    margin-bottom: 6vh;
+}
+
+.buttons{
+    width: 16vw;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.buttons a{
+    color: #F2F2F2;
+    font-size: 1.55vw;
+    text-decoration: none;
+    font-weight: bold;
+    background: #151515;
+    padding: 4% 6%;
+    border-radius: 10px;
+    transition: .3s ease-in-out;
+}
+
+.buttons a:hover{
+    background: transparent;
+    outline: 1px solid #151515;
+    color: #151515;
+}

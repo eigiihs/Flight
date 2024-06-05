@@ -1,4 +1,4 @@
-.container {
+.wrapper {
     display: flex;
     align-items: center;
     width: 100%;
@@ -82,20 +82,22 @@ form input {
 
 .btn{
     padding: .5em 1.5em;
-    border: none;
+    border: #F2F2F2 solid 1.5px;
     border-radius: 10px;
-    background: #F2F2F2;
+    background: transparent;
     font-size: 1.3vw;
     font-weight: 900;
     transition: .25s ease-in-out;
     margin-top: 1em;
     cursor: pointer;
-    color: #151515;
+    color: #F2F2F2;
 }
 
 .btn:hover{
     box-shadow: 0px 15px 20px rgba(145, 145, 145, 0.4);
-    transform: translateY(-7px);
+    transform: translateY(-5px);
+    background: #F2F2F2;
+    color: #151515;
 }
 
 .btn:active{
