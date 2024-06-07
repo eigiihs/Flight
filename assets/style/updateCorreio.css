@@ -62,11 +62,14 @@
 .filearea{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .filearea input{
     height: 6.4vh;
     width: 42vw;
+    margin-bottom: 1.3vh;
 }
 
 .filearea input[type="file"]::file-selector-button {

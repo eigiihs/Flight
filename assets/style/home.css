@@ -128,8 +128,8 @@
 .checkmark {
     top: 0;
     left: 0;
-    height: 2em;
-    width: 2em;
+    height: 1.9vw;
+    width: 1.9vw;
     transition: 100ms;
     animation: dislike_effect 400ms ease;
 }

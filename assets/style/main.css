@@ -49,6 +49,10 @@ main {
     border-right: 1px solid #F2F2F2;
     position: fixed;
     margin-top: 17.8vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: auto;
 }
 
 .option,
