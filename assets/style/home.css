@@ -117,7 +117,6 @@
 
 .like {
     display: block;
-    position: relative;
     cursor: pointer;
     user-select: none;
     transition: 100ms;
