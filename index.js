@@ -100,7 +100,8 @@ app.post('/upSign', (req, res) => {
         }
 
         if (data.length > 0) {
-            return res.status(400).send('Username já existe! Faça login ou escolha outro.')
+
+            return res.status(400).render('signUp', { css: '/style/login.css', message: 'Username já existe! Faça login ou escolha outro.' })
         }
 
         const sql = `INSERT INTO Users (username, name_, email, password_) 
