@@ -52,6 +52,30 @@ function checkAuth(message) {
     }
 };
 
+// Middleware para verificar a propriedade do post
+function checkOwnership(message) {
+    return function (req, res, next) {
+        const postId = req.body.id || req.params.id;
+    const userId = req.session.user.id;
+
+    const sql = `SELECT * FROM Correios WHERE id = '${postId}' AND user_id = '${userId}'`;
+
+    conn.query(sql, function (err, results) {
+        if (err) {
+            console.log('erro: ', err);
+            return false;
+        }
+
+        if (results.length === 0) {
+            req.session.message = message;
+            return res.redirect('/showMessage');
+        }
+
+        next();
+    })
+    }
+};
+
 app.get('/', (req, res) => {
     res.render('login', { css: '/style/login.css', title: '| Login' })
 });
@@ -230,7 +254,7 @@ app.get('/home/post/:id', (req, res) => {
     })
 });
 
-app.get('/home/edit/:id', checkAuth('Você precisa estar logado para editar um post!'), (req, res) => {
+app.get('/home/edit/:id', checkAuth('Você precisa estar logado para editar um post!'), checkOwnership('Você não tem permissão para editar este post!'), (req, res) => {
     const id = req.params.id;
 
     const sql = `SELECT Correios.*, Users.username, Users.name_ 
@@ -283,7 +307,7 @@ app.post('/correio/update', upload.single('image'), async (req, res) => {
     }
 });
 
-app.get('/home/remove/:id', (req, res) => {
+app.get('/home/remove/:id', checkAuth('Você precisa estar logado para deletar um post!'), checkOwnership('Você não tem permissão para deletar este post!'), (req, res) => {
     const id = req.params.id;
 
     const sql = `DELETE FROM Correios WHERE id = ${id}`;
