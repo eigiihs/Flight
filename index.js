@@ -24,8 +24,11 @@ app.use(
 
 app.use(session({
     secret: 'S%G@m#19!25^23',
-    resave: false,
-    saveUninitialized: true
+    resave: true,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 24 * 60 * 60 * 1000
+    }
 }));
 
 const storage = multer.memoryStorage();
@@ -52,7 +55,6 @@ function checkAuth(message) {
     }
 };
 
-// Middleware para verificar a propriedade do post
 function checkOwnership(message) {
     return function(req, res, next) {
         const postId = req.body.id || req.params.id;
