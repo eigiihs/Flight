@@ -1,37 +1,49 @@
 <div class="wrapper">
+    <!-- Seção das informações à esquerda -->
     <section class="ct-Leftinfo">
+        <!-- Título e subtítulo -->
         <div class="title">
             <h1>Hey! How's it going?</h1>
             <h2>Create your account.</h2>
+            <!-- Mensagem e link para login -->
             <p>Already have an account? <a href="/">Log In</a></p>
         </div>
+        <!-- Formulário de cadastro -->
         <form action="/upSign" method="POST">
+            <!-- Div para controlar os inputs -->
             <div class="form-controll">
+                <!-- Primeiro campo de entrada, utilizado para o envio do username -->
                 <div class="oneput">
-                    <label for="">Username</label>
+                    <label for="username">Username</label>
                     <input type="text" name="username" id="username">
                 </div>
-
+                <!-- Segundo campo de entrada, usado para envio do nome -->
                 <div class="oneput">
-                    <label for="">Name</label>
+                    <label for="name">Name</label>
                     <input type="text" name="name" id="name">
                 </div>
             </div>
 
-            <label for="">E-mail</label>
+            <!-- Campo de entrada para e-mail -->
+            <label for="email">E-mail</label>
             <input type="text" name="email" id="email">
 
-            <label for="">Password</label>
+            <!-- Campo de entrada para senha -->
+            <label for="password">Password</label>
             <input type="password" name="password" id="password"> 
 
+            <!-- Mensagem de erro, se houver -->
             {{#if message}}
             <p class="error-message">{{message}}</p>
             {{/if}}
 
+            <!-- Botão de submissão do formulário -->
             <button type="submit" class="btn">Sign Up</button>
         </form>
     </section>
+    <!-- Seção do banner lateral direito -->
     <section class="rightBanner">
+        <!-- Imagem do banner lateral direito -->
         <img src="/imgs/sideBanner.svg" alt="">
     </section>
 </div>

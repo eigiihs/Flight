@@ -1,24 +1,36 @@
+<!-- Wrapper que contém as seções esquerda e direita -->
 <div class="wrapper">
+    <!-- Seção do banner lateral esquerdo -->
     <section class="leftBanner">
+        <!-- Imagem do banner lateral -->
         <img src="/imgs/sideBanner.svg" alt="">
     </section>
+
+    <!-- Seção das informações à direita -->
     <section class="ct-Rightinfo">
+        <!-- Título e subtítulo -->
         <div class="title">
             <h1>Hey! What's Up?</h1>
             <h2>Good to see you again.</h2>
+            <!-- Mensagem para link de cadastro -->
             <p>Don't have an account? <a href="/signUp">Sign Up</a></p>
         </div>
+        <!-- Formulário de login -->
         <form action="/login" method="POST">
-            <label for="">Username</label>
+            <!-- Campo de entrada para o nome de usuário -->
+            <label for="username">Username</label>
             <input type="text" name="username" id="username">
 
-            <label for="">Password</label>
+            <!-- Campo de entrada para a senha -->
+            <label for="password">Password</label>
             <input type="password" name="password" id="password">
 
+            <!-- Mensagem de erro, se houver -->
             {{#if message}}
             <p class="error-message">{{message}}</p>
             {{/if}}
 
+            <!-- Botão de submissão do formulário -->
             <button type="submit" class="btn">Log In</button>
         </form>
     </section>

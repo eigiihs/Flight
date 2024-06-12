@@ -61,19 +61,27 @@
             </div>
         </div>
     </section>
+
+    <!-- Seção de criação de correio -->
     <section class="creating">
+        <!-- Título da seção -->
         <h4>Criar um Correio</h4>
+        <!-- Contêiner do formulário -->
         <div class="container">
+            <!-- Formulário de envio -->
             <form action="/upload" method="POST" enctype="multipart/form-data">
-              
+                <!-- Campo de entrada para o título do correio -->
                 <div class="entryarea">
                     <input type="text" name="title" id="title" required>
-                    <label for="">Título do correio</label>
+                    <label for="title">Título do correio</label>
                 </div>
 
+                <!-- Campo de entrada para a categoria do correio -->
                 <div class="entryarea">
                     <input type="text" name="category" id="category" list="cat-opt" required>
+                    <!-- Lista de opções para a categoria -->
                     <datalist id="cat-opt">
+                        <!-- Opções de categorias -->
                         <option value="Arte"></option>
                         <option value="Cinema e TV"></option>
                         <option value="Ciências"></option>
@@ -86,15 +94,18 @@
                     <label for="">Categoria</label>
                 </div>
 
+                <!-- Campo de entrada para a escrita do post/correio -->
                 <div class="entryarea">
                     <input type="text" name="post" id="post" required>
                     <label for="">Correio</label>
                 </div>
 
+                <!-- Campo de entrada para o da imagem -->
                 <div class="filearea">
                     <input type="file" name="image" id="image">
                 </div>
-            
+
+                <!-- Botão de submissão do formulário -->
                 <div class="submit">
                     <button type="submit">Enviar</button>
                 </div>

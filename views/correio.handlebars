@@ -61,44 +61,52 @@
             </div>
         </div>
     </section>
+
+    <!-- Conteúdo do correio -->
     <section class="container">
         <div class="align">
+            <!-- Botão de voltar -->
             <div class="back">
                 <a href="/home"><img src="/imgs/back_to.svg" alt=""></a>
             </div>
+            <!-- Detalhes do correio -->
             <div class="details">
+                <!-- Informações do perfil -->
                 <div class="profileInfo">
                     <h5>{{correio.name_}}</h5>
                     <h6>@{{correio.username}}</h6>
                 </div>
-
+                <!-- Conteúdo do correio -->
                 <div class="cr-datas">
                     <h4>{{correio.title}}</h4>
                     <p>{{correio.post}}</p>
+                    <!-- Imagem do correio -->
                     <div class="images">
                         <img src="/uploads/{{correio.imageName}}" alt="">
                     </div>
                 </div>
-
+                <!-- Formulário para adicionar comentário -->
                 <div class="add-comment">
                     <h5>Deixe seu comentário</h5>
-
                     <form action="/home/correio/{{id}}/comment" method="POST">
                         <input type="text" name="comment" id="comment" required>
                         <button class="btn-comment" type="submit">Postar</button>
                     </form>
                 </div>
-
+                <!-- Lista de comentários -->
                 {{#if comments.length}}
                 <section class="comments">
                     <h2>Comentários</h2>
+                    <!-- Iteração/Percorrendo sobre os comentários -->
                     {{#each comments}}
                     <div class="comment">
+                        <!-- Cabeçalho do comentário -->
                         <div class="commentHeader">
                             <h5>{{this.username}}</h5>
                             <img src="/imgs/circle_.svg" alt="">
                             <span>{{formatDate this.created_at}}</span>
                         </div>
+                        <!-- Conteúdo do comentário -->
                         <p>{{this.comment_}}</p>
                     </div>
                     {{/each}}

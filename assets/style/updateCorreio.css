@@ -1,4 +1,4 @@
-.creating{
+.updating{
     height: 80vh;
     width: calc(100% - 20%);
     margin-left: 20%;
@@ -9,7 +9,7 @@
     flex-direction: column;
 }
 
-.creating h4{
+.updating h4{
     font-size: 2.5vw;
     margin-bottom: 3vh;
 }

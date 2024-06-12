@@ -3,23 +3,31 @@
 </header>
 
 <main>
+    <!-- Menu de navegação -->
     <section class="menu">
+        <!-- Opções do menu -->
         <div class="options">
+            <!-- Opção: Ir para página inicial -->
             <div class="option">
                 <img src="/imgs/home-icon.svg" alt="">
                 <a href="/home">Página Inicial</a>
             </div>
+            <!-- Opção: Criar um correio -->
             <div class="option">
                 <img src="/imgs/create-icon.svg" alt="">
                 <a href="/create">Criar um correio</a>
             </div>
         </div>
+        <!-- Linha divisória do menu -->
         <hr class="divMenu">
+        <!-- Categorias do menu -->
         <div class="categories">
+            <!-- Título das categorias -->
             <div class="option">
                 <img src="/imgs/categorize-icon.svg" alt="">
                 <h5>Categorias</h5>
             </div>
+            <!-- Categorias individuais -->
             <div class="category">
                 <img src="/imgs/art-icon.svg" alt="">
                 <a href="/home/category/Arte">Arte</a>
@@ -53,7 +61,9 @@
                 <a href="/home/category/Negócios">Negócios</a>
             </div>
         </div>
+        <!-- Linha divisória do menu -->
         <hr class="divMenu">
+        <!-- Logout -->
         <div class="logout">
             <div class="option">
                 <img src="/imgs/logout-icon.svg" alt="">
@@ -61,56 +71,75 @@
             </div>
         </div>
     </section>
+
     <section class="container">
+        <!-- Verifica se a categoria está definida -->
         {{#if category}}
+        <!-- Exibe o título da categoria -->
         <h1>{{category}}</h1>
         {{else}}
+        <!-- Exibe uma mensagem de boas-vindas -->
         <h1>Welcome, {{user.username}}!</h1>
         {{/if}}
 
+        <!-- Iteração sobre os correios -->
         {{#each correios}}
         <div class="card">
             <div class="cd-header">
+                <!-- Informações do perfil -->
                 <div class="profileInfo">
                     <h5>{{name_}}</h5>
                     <h6>@{{username}}</h6>
                 </div>
+                <!-- Detalhes do correio -->
                 <div class="details">
+                    <!-- Categoria do correio -->
                     <div class="tagTheme">
                         <h6>{{category}}</h6>
                     </div>
+                    <!-- Ações do correio (editar e excluir) -->
                     <div class="actions">
                         <a href="/home/edit/{{id}}"><img src="/imgs/edit-icon.svg" alt=""></a>
                         <a href="/home/remove/{{id}}"><img src="/imgs/delete-icon.svg" alt=""></a>
                     </div>
                 </div>
             </div>
+            <!-- Link para o correio detalhado -->
             <a href="/home/post/{{id}}">
                 <div class="cd-body">
+                    <!-- Título do correio -->
                     <h4>{{title}}</h4>
-                    <p>
-                        {{post}}
-                    </p>
+                    <!-- Conteúdo do correio -->
+                    <p>{{post}}</p>
+                    <!-- Imagem do correio -->
                     <div class="images">
                         <img src="/uploads/{{imageName}}" alt="">
                     </div>
                 </div>
             </a>
+            <!-- Linha divisória -->
             <hr class="divText">
+            <!-- Interações do usuário (curtir, comentar, salvar, compartilhar) -->
             <div class="interactions">
+                <!-- Checkbox para curtir -->
                 <label class="like">
                     <input type="checkbox">
+                    <!-- Ícone de curtir -->
                     <div class="checkmark">
+                        <!-- Ícone SVG -->
                         <svg viewBox="0 0 256 256">
-                            <rect fill="none" height="256" width="256"></rect>
+                            <!-- Caminho do ícone -->
                             <path
                                 d="M224.6,51.9a59.5,59.5,0,0,0-43-19.9,60.5,60.5,0,0,0-44,17.6L128,59.1l-7.5-7.4C97.2,28.3,59.2,26.3,35.9,47.4a59.9,59.9,0,0,0-2.3,87l83.1,83.1a15.9,15.9,0,0,0,22.6,0l81-81C243.7,113.2,245.6,75.2,224.6,51.9Z"
                                 stroke-width="10px" stroke="#F2F2F2" fill="none"></path>
                         </svg>
                     </div>
                 </label>
+                <!-- Ícone de comentário -->
                 <a href="/home/post/{{id}}"><img src="/imgs/comment-icon.svg" alt=""></a>
+                <!-- Ícone de salvar -->
                 <img src="/imgs/save-icon.svg" alt="" id="save">
+                <!-- Ícone de compartilhar -->
                 <img src="/imgs/share-icon.svg" alt="">
             </div>
         </div>

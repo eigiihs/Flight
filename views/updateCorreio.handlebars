@@ -62,23 +62,30 @@
         </div>
     </section>
 
-    <section class="creating">
+    <!-- Seção para editar um correio -->
+    <section class="updating">
+        <!-- Título da seção -->
         <h4>Editar um Correio</h4>
 
+        <!-- Formulário de edição do correio -->
         <form action="/correio/update" method="POST" enctype="multipart/form-data">
+            <!-- Campo oculto para o ID do correio -->
             <input type="hidden" name="id" value={{dataCorreio.id}}>
+            <!-- Campo oculto para o nome da imagem do correio -->
             <input type="hidden" name="imageName" value="{{dataCorreio.imageName}}">
 
-
+            <!-- Campo de entrada para o título do correio -->
             <div class="entryarea">
                 <input type="text" name="title" id="title" value="{{dataCorreio.title}}" required>
-                <label for="">Título do correio</label>
+                <label for="title">Título do correio</label>
             </div>
 
+            <!-- Campo de entrada para a categoria do correio -->
             <div class="entryarea">
                 <input type="text" name="category" id="category" value="{{dataCorreio.category}}" list="cat-opt"
                     required>
                 <datalist id="cat-opt">
+                    <!-- Opções de categorias -->
                     <option value="Arte"></option>
                     <option value="Cinema e TV"></option>
                     <option value="Ciências"></option>
@@ -88,22 +95,23 @@
                     <option value="Política"></option>
                     <option value="Negócios"></option>
                 </datalist>
-                <label for="">Categoria</label>
+                <label for="category">Categoria</label>
             </div>
 
+            <!-- Campo de entrada para o conteúdo do correio -->
             <div class="entryarea">
                 <input type="text" name="post" id="post" value="{{dataCorreio.post}}" required>
-                <label for="">Correio</label>
+                <label for="post">Correio</label>
             </div>
 
+            <!-- Campo de upload de imagem -->
             <div class="filearea">
                 <input type="file" name="image" id="image">
             </div>
-            
 
+            <!-- Botão de submissão do formulário -->
             <div class="submit">
                 <button type="submit">Enviar</button>
             </div>
         </form>
     </section>
-</main>
