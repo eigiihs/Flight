@@ -52,27 +52,26 @@ function checkAuth(message) {
     }
 };
 
-// Middleware para verificar a propriedade do post
 function checkOwnership(message) {
-    return function (req, res, next) {
+    return function(req, res, next) {
         const postId = req.body.id || req.params.id;
-    const userId = req.session.user.id;
+        const userId = req.session.user.id;
+    
+        const sql = `SELECT * FROM Correios WHERE id = ${postId} AND user_id = ${userId}`;
 
-    const sql = `SELECT * FROM Correios WHERE id = '${postId}' AND user_id = '${userId}'`;
+        conn.query(sql, function (err, data) {
+            if (err) {
+                console.log('erro: ', err)
+                return
+            }
 
-    conn.query(sql, function (err, results) {
-        if (err) {
-            console.log('erro: ', err);
-            return false;
-        }
-
-        if (results.length === 0) {
-            req.session.message = message;
-            return res.redirect('/showMessage');
-        }
-
-        next();
-    })
+            if (data.length === 0) {
+                req.session.message = message;
+                return res.redirect('/showMessage');
+            }
+    
+            next();
+        })
     }
 };
 
