@@ -6,6 +6,7 @@ const sharp = require('sharp');
 const cors = require('cors');
 const session = require('express-session');
 const path = require('path');
+const fs = require('fs');
 const moment = require('moment');
 
 
@@ -312,15 +313,36 @@ app.post('/correio/update', upload.single('image'), async (req, res) => {
 app.get('/home/remove/:id', checkAuth('Você precisa estar logado para deletar um post!'), checkOwnership('Você não tem permissão para deletar este post!'), (req, res) => {
     const id = req.params.id;
 
-    const sql = `DELETE FROM Correios WHERE id = ${id}`;
+    const getImage = `SELECT imageName FROM Correios WHERE id = ${id}`;
 
-    conn.query(sql, function (err, data) {
+    conn.query(getImage, function (err, data) {
         if (err) {
             console.log('erro: ', err);
-            return;
+            return
         }
 
-        res.redirect('/home')
+        const imageName = data[0].imageName;
+
+        const sql = `DELETE FROM Correios WHERE id = ${id}`;
+
+        conn.query(sql, function (err, data) {
+            if (err) {
+                console.log('erro: ', err);
+                return;
+            }
+
+            if (imageName) {
+                const imagePath = path.join(__dirname, 'uploads', imageName);
+                fs.unlink(imagePath, (err) => {
+                    if(err){
+                        console.log('erro ao deletar a imagem: ', err)
+                    }
+                    res.redirect('/home');
+                })   
+            } else {
+                res.redirect('/home');
+            }
+        })
     })
 });
 
